@@ -7,8 +7,8 @@ class App extends Component {
   render () {
     return (
       <div>
-      <Header type="green"/>
-      <BlogList />
+        <Header type="green"/>
+        <BlogList />
       </div>
     )
   }

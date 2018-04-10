@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
+import Blogs from '../../imports/collections/blogs';
+import { createContainer } from 'meteor/react-meteor-data'
 
-class Dashboard extends Component {
+class DashboardEdit extends Component {
   submitHandler(event) {
     event.preventDefault();
 
     console.log(this.refs.title.value, this.refs.select.value, this.refs.tags.value, this.refs.content.value)
 
-    Meteor.call('blogs.insert', this.refs.title.value, this.refs.select.value, this.refs.tags.value, this.refs.content.value)
+    Meteor.call('blogs.edit', this.refs.title.value, this.refs.select.value, this.refs.tags.value, this.refs.content.value)
   }
 
   render() {
-    console.log(this.props, Meteor.userId())
+    console.log(this.props)
 
     let dashboard = <p> You need to Login First..!</p>
 
@@ -46,4 +48,8 @@ class Dashboard extends Component {
   }
 };
 
-export default Dashboard;
+export default createContainer((props) => {
+    let blog = Blogs.findOne({ _id: this.props.params.id })
+
+    return { blog: blog }
+}, DashboardEdit);

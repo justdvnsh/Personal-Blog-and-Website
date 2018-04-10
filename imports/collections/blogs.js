@@ -11,6 +11,10 @@ Meteor.methods({
       published: false,
       author: this.userID
     })
+  },
+
+  'blogs.update': function(id) {
+    return Blogs.update(id, { $set: { published: true } })
   }
 });
 
