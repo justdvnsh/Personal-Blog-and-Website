@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+	font-weight: 400px;
+	font-size: 16px;
+	line-height: 1.7;
+	color: #777;
+}
+
+.nav > li > a {
+  font-size: 14px;
+  padding-left: 3px;
+}
+
+.navbar .brand, .navbar .nav > li > a {
+    color: #fff;
+}
+
+.header {
+	height: 60vh;
+	background-size: cover;
+	background-position: top;
+	position: relative;
+}
+
+.green {
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40,180,31, 0.8));
+}
