@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Navbar from './navbar'
+import NavbarHeader from './navbar-header'
 
 class Header extends Component {
   render () {
     return (
       <header className={"header" + " " + this.props.type}>
         <img src="" alt="My-avatar" />
-        <Navbar />
+        <NavbarHeader />
       </header>
     )
   }

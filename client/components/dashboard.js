@@ -27,9 +27,9 @@ class Dashboard extends Component {
                   <form onSubmit={this.submitHandler.bind(this)}>
                     <input type="text" placeholder="Title..." ref="title" className="form-control"/><br />
                     <select ref="select" className="form-control">
-                      <option>Blockchain</option>
-                      <option>Developement</option>
-                      <option>Behind-the-scenes</option>
+                      <option>blockchain</option>
+                      <option>developement</option>
+                      <option>behind-the-scenes</option>
                       <option>general</option>
                     </select><br />
                     <input type="text" ref="tags" className="form-control" placeholder="Tags..."/><br />

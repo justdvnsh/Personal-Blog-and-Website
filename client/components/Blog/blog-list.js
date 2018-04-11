@@ -1,32 +1,49 @@
 import React, { Component } from 'react';
 import { Blogs } from '../../../imports/collections/blogs';
-import { createContainer } from 'meteor/react-meteor-data'
+import { createContainer } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 
-class BlogListDrafts extends Component {
+class BlogList extends Component {
 
   renderBlogs() {
     if (!this.props.blogs) {
       return <p>Loading..</p>
     } else  {
-      return this.props.blogs.map((blog) => {
-        return (
-            <div className="col-md-12">
-              <div className="card" key={blog._id} style={{ backgroundColor: "#fff" ,boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '5px', marginBottom: '20px', width: '100%'}}>
-                <div className="card-body">
-                  <h1>{blog.title}</h1>
-                  <h3>{blog.content}</h3>
-                  <button className="btn btn-primary" style={{margin: '20px'}}>Edit</button>
-                </div>
+      return this.props.blogs.map((blog, index) => {
+
+        if ( index === 0 || index%4 === 0 ) {
+          return (
+              <div className="col-md-12" key={blog._id}>
+                <Link to={`/${blog.category}/${blog._id}`} style={{ textDecoration: 'none' }}>
+                  <div className="card" style={{ backgroundColor: "#fff" ,boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '10px', marginBottom: '20px', width: '80%',marginLeft: '9.5%', height: '330px'}}>
+                    <div className="card-body">
+                      <h1>{blog.title}</h1>
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </div>
-        )
+          )
+        } else {
+          return (
+              <div className="col-md-4" key={blog._id} style={{ width: '27%' }} >
+                <Link to={`/${blog.category}/${blog._id}`} style={{ textDecoration: 'none' }}>
+                  <div className="card" style={{ backgroundColor: "#fff" ,boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '10px', marginLeft: '36%', marginTop: '10%', marginBottom: '10%' ,width: '100%', height: '600px', wordWrap: "break-word"}}>
+                    <div className="card-body">
+                      <h1>{blog.title}</h1>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+          )
+        }
+
       })
     }
   }
 
   render () {
     return (
-      <div className="container">
+      <div>
         <h1>{this.renderBlogs()}</h1>
       </div>
     )
@@ -37,4 +54,4 @@ export default createContainer(() => {
   Meteor.subscribe('PublishedBlogs')
 
   return { blogs: Blogs.find({}).fetch() }
-}, BlogListDrafts);
+}, BlogList);

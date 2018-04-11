@@ -1,10 +1,10 @@
 import React , { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-class Navbar extends Component {
+class NavbarHeader extends Component {
   render () {
     return (
-      <nav className="navbar navbar-default navbar-custom" style={{position: 'absolute', bottom: '0', width: '80%', background: 'transparent', border: 'none',
+      <nav className="navbar navbar-default " style={{position: 'absolute', bottom: '0', width: '80%', background: 'transparent', border: 'none',
                                                       textDecoration: 'none', left: '8%'}}>
         <div className="container-fluid">
           <div className="navbar-header">
@@ -35,4 +35,4 @@ class Navbar extends Component {
   }
 };
 
-export default Navbar ;
+export default NavbarHeader ;
