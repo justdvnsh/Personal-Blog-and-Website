@@ -9,7 +9,7 @@ class BlogListDrafts extends Component {
   }
 
   editPost(id) {
-    this.props.history.push(`/dashboard/edit/${id}`)
+    this.props.routes.history.push(`/dashboard/edit/${id}`)
   }
 
   renderBlogs() {

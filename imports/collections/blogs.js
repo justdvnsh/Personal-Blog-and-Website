@@ -15,7 +15,11 @@ Meteor.methods({
 
   'blogs.update': function(id) {
     return Blogs.update(id, { $set: { published: true } })
-  }
+  },
+
+  'blogs.edit': function(id, title, category, tags, content) {
+    return Blogs.update(id, { $set: { title, category , tags ,content } })
+  },
 });
 
 export const Blogs = new Mongo.Collection('blogs');

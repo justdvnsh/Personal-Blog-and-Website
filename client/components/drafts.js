@@ -7,7 +7,7 @@ class Drafts extends Component {
     let drafts = <p>You need to Login First</p>
 
     if(Meteor.userId()) {
-      drafts = <BlogListDrafts />
+      drafts = <BlogListDrafts routes={this.props}/>
     }
     return drafts;
   }

@@ -18,11 +18,11 @@ class Navbar extends Component {
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Blockchain</a></li>
-              <li><a href="#">Developement</a></li>
-              <li><a href="#">Behind-the-Scenes</a></li>
-              <li><a href="#">About</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/blockchain">Blockchain</a></li>
+              <li><a href="/developement">Developement</a></li>
+              <li><a href="/behind-the-scenes">Behind-the-Scenes</a></li>
+              <li><a href="/about">About</a></li>
             </ul>
             <ul className="nav navbar-nav navbar-right" >
               <li><a href="#">Twitter</a></li>

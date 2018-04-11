@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import App from './components/app';
+import Blockchain from './components/blockchain';
+import Developement from './components/developement';
+import BehindTheScenes from './components/behind-the-scenes';
+import General from './components/general';
 import Admin from './components/admin';
 import Dashboard from './components/dashboard';
 import Drafts from './components/drafts';
@@ -15,9 +19,9 @@ const routes = (
     <Switch>
       <Route path="/" exact component={App} />
       <Route path="/blockchain" exact component={App} />
-      <Route path="/developement" exact component={App} />
-      <Route path="/behind-the-scenes" exact component={App} />
-      <Route path="/general" exact component={App} />
+      <Route path="/developement" exact component={Developement} />
+      <Route path="/behind-the-scenes" exact component={BehindTheScenes} />
+      <Route path="/general" exact component={General} />
       <Route path="/about" exact component={App} />
       <Route path="/admin" exact component={Admin} />
       <Route path="/dashboard/edit/:id" exact component={DashboardEdit} />
