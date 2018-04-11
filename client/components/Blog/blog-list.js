@@ -10,13 +10,15 @@ class BlogListDrafts extends Component {
     } else  {
       return this.props.blogs.map((blog) => {
         return (
-          <div className="card" key={blog._id} style={{boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '20px', marginBottom: '20px'}}>
-            <div className="card-body">
-              <h1>{blog.title}</h1>
-              <h3>{blog.content}</h3>
-              <button className="btn btn-primary" style={{margin: '20px'}}>Edit</button>
+            <div className="col-md-12">
+              <div className="card" key={blog._id} style={{ backgroundColor: "#fff" ,boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '5px', marginBottom: '20px', width: '100%'}}>
+                <div className="card-body">
+                  <h1>{blog.title}</h1>
+                  <h3>{blog.content}</h3>
+                  <button className="btn btn-primary" style={{margin: '20px'}}>Edit</button>
+                </div>
+              </div>
             </div>
-          </div>
         )
       })
     }

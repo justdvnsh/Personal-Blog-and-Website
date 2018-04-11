@@ -8,7 +8,11 @@ class General extends Component {
     return (
       <div>
         <Header type="green"/>
-        <BlogList />
+        <div className="container-fluid" style={{backgroundColor: '#ececec'}}>
+          <div className="row" style={{ width: '100%'}}>
+            <BlogList />
+          </div>
+        </div>
       </div>
     )
   }
