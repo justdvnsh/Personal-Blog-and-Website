@@ -10,7 +10,7 @@ class DevelopementSingle extends Component {
   render () {
     return (
       <div style={{ backgroundColor: "#fff" , height: '100vh' }}>
-        <NavbarBlog color='orange'/><br /><br />
+        <NavbarBlog color='red'/><br /><br />
         <BlogDetail props={this.props} />
       </div>
     )

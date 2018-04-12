@@ -14,7 +14,8 @@ import Admin from './components/admin';
 import Dashboard from './components/dashboard';
 import Drafts from './components/drafts';
 import DashboardEdit from './components/dashboard-edit'
-import { Meteor } from 'meteor/meteor'
+import { Meteor } from 'meteor/meteor';
+import fourOfour from './components/fourOfour'
 
 
 
@@ -35,6 +36,7 @@ const routes = (
       <Route path="/dashboard/edit/:id" exact component={DashboardEdit} />
       <Route path="/dashboard" exact component={Dashboard} />
       <Route path="/drafts" exact component={Drafts} />
+      <Route component = { fourOfour } />
     </Switch>
   </BrowserRouter>
 );

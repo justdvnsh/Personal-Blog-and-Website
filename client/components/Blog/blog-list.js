@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Blogs } from '../../../imports/collections/blogs';
-import { createContainer } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 
 class BlogList extends Component {
@@ -13,16 +12,20 @@ class BlogList extends Component {
 
         if ( index === 0 || index%4 === 0 ) {
           return (
-              <div className="col-md-12" key={blog._id}>
+              <div className="col-sm-12 col-xs-12" key={blog._id}>
                 <Link to={`/${blog.category}/${blog._id}`} style={{ textDecoration: 'none' }}>
-                  <div className="card" style={{ backgroundColor: "#fff" ,boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '10px', marginBottom: '20px', width: '80%',marginLeft: '9.5%', height: '330px'}}>
+                  <div className="card card-mobile-xs-12" >
                     <div className="card-body">
-                      <div className="col-md-8">
-                        <img src={ blog.coverImg } align="left" style={{ width: '100%', height: '100%', display: 'block' }}/>
+                      <div className="col-xs-8">
+                        {
+                           blog.coverImg ? <img src={ blog.coverImg } align="left" className="card-img"/> : <img src="" className="xs-12-img-not-found"/>
+                        }
                       </div>
-                      <div className="col-md-4">
-                        <h1 style={{ wordWrap: 'break-word'}}> {blog.title}</h1>
-                        <p style={{ wordWrap: 'break-word', fontSize: '22px' }}>{ blog.metaData }</p>
+                      <div className="col-xs-4" style={{  padding: '10px' }}>
+                        <span style={{ color: '#777', fontSize: '15px', textTransform: 'capitalize' }}>{ blog.category }</span>
+                        <h1 style={{ wordWrap: 'break-word'}} className="blog-list-h1"> {blog.title}</h1>
+                        <p style={{ wordWrap: 'break-word', fontSize: '18px', color: 'black' }}>{ blog.metaData }</p>
+                        <span style={{ textTransform: 'capitalize', fontSize: '15px', color: 'rgba(77,166,255, 0.8)', fontWeight: 'bold' }}>Divyansh Dwivedi</span>
                       </div>
                     </div>
                   </div>
@@ -31,16 +34,22 @@ class BlogList extends Component {
           )
         } else {
           return (
-              <div className="col-md-4 custom-card" key={blog._id} style={{ width: '27%' }} >
+              <div className="col-sm-4  custom-card col-xs-6" key={blog._id} >
                 <Link to={`/${blog.category}/${blog._id}`} style={{ textDecoration: 'none' }}>
-                  <div className="card" style={{ backgroundColor: "#fff" ,boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '10px', marginLeft: '36%', marginTop: '10%', marginBottom: '10%' ,width: '100%', height: '600px', wordWrap: "break-word"}}>
+                  <div className="card card-mobile-xs-4" >
                     <div className="card-body">
                       <div className="row">
-                        <img src={ blog.coverImg } align="left" style={{ width: '100%', height: '100%', display: 'block'}}/>
+                        <div className="col-xs-12">
+                        {
+                          blog.coverImg ? <img src={ blog.coverImg } align="left" className='card-img'/> : <img src="" className="xs-4-img-not-found"/>
+                        }
+                        </div>
                       </div>
-                      <div className="row">
-                        <h1 style={{ wordWrap: 'break-word'}}>{blog.title}</h1>
-                        <p style={{ wordWrap: 'break-word', fontSize: '22px' }}>{ blog.metaData }</p>
+                      <div className="row" style={{ padding: '30px' }}>
+                        <span style={{ color: '#777', fontSize: '15px', textTransform: 'capitalize' }}>{ blog.category }</span>
+                        <h1 style={{ wordWrap: 'break-word'}} className="blog-list-h1">{blog.title}</h1>
+                        <p style={{ wordWrap: 'break-word', fontSize: '18px', color: 'black' }}>{ blog.metaData }</p>
+                        <span style={{ textTransform: 'capitalize', fontSize: '15px', color: 'rgba(77,166,255, 0.8)', fontWeight: 'bold' }}>Divyansh Dwivedi</span>
                       </div>
                     </div>
                   </div>
@@ -61,8 +70,4 @@ class BlogList extends Component {
   }
 };
 
-export default createContainer(() => {
-  Meteor.subscribe('PublishedBlogs')
-
-  return { blogs: Blogs.find({}).fetch() }
-}, BlogList);
+export default BlogList;
