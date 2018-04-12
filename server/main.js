@@ -27,19 +27,4 @@ Meteor.startup(() => {
     return Blogs.find({ category: 'general' })
   })
 
-  Meteor.publish('blockchain-suggest', function() {
-    return Blogs.find({ category: 'blockchain' }, { limit: 3 })
-  })
-
-  Meteor.publish('behind-the-scenes-suggest', function() {
-    return Blogs.find({ category: 'behind-the-scenes' }, { limit: 3 })
-  })
-
-  Meteor.publish('developement-suggest', function() {
-    return Blogs.find({ category: 'developement' }, { limit: 3 })
-  })
-  
-  Meteor.publish('general-suggest', function() {
-    return Blogs.find({ category: 'general' }, { limit: 3 })
-  })
 });

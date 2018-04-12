@@ -4,7 +4,6 @@ import { Blogs } from '../../../imports/collections/blogs';
 import { Link } from 'react-router-dom';
 import { MarkdownPreview } from 'react-marked-markdown';
 import Spinner from '../spinner';
-import BlogSuggestions from './blog-suggestions'
 
 class BlogDetail extends Component {
   render () {
@@ -25,7 +24,7 @@ class BlogDetail extends Component {
                   <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>{ this.props.blog.title }</h1>
                   <div className="row">
                     <div className=" col-md-8 col-md-offset-2">
-                      <img src = { this.props.blog.coverImg } style={{ width:  '100%', height: '100%' }} />
+                      <img src = { this.props.blog.coverImg } style={{ width:  '100%', height: '100%', position: 'relative' }} />
                     </div>
                   </div>
                   <hr />
@@ -45,7 +44,6 @@ class BlogDetail extends Component {
               </div>
             </div>
           </div>
-          <BlogSuggestions category={this.props.blog.category}/>
         </div>
       )
     }

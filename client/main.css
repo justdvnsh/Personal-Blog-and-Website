@@ -88,6 +88,7 @@ body {
   background-color: #777;
 }
 
+
 @media screen and (max-width: 500px) {
   .header-img{
     height: 10%;
@@ -95,8 +96,12 @@ body {
     margin-top: 50%;
   }
 
-  .navbar .navbar-default{
-    background-color: #ececec
+  .navbar .navbar-default .brand, .navbar .nav {
+    background-color: #ececec;
+  }
+
+  .navbar .brand, .navbar .nav > li > a {
+      color: black;
   }
 
   .card-mobile-xs-4 {

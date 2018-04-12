@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 class NavbarBlog extends Component {
   render () {
     return (
-      <nav className={"navbar navbar-default" + " " + this.props.color} style={{ top: '0', width: '100%', border: 'none',
+      <nav className={"navbar navbar-default" + " " + this.props.color} style={{position: 'absolute', top: '0', width: '100%', border: 'none',
                                                                         textDecoration: 'none', height: '10px'}}>
         <div className="container-fluid">
           <div className="navbar-header">
@@ -16,7 +16,7 @@ class NavbarBlog extends Component {
             </button>
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style={{ width: '85%', marginLeft:'7%' }}>
-            <ul className="nav navbar-nav">
+            <ul className="nav navbar-nav ">
               <li><a href="/">Home</a></li>
               <li><a href="/blockchain">Blockchain</a></li>
               <li><a href="/developement">Developement</a></li>

@@ -42,7 +42,7 @@ class BlogSuggestions extends Component {
 };
 
 export default createContainer((props) => {
-  Meteor.subscribe(`${props.category}-suggest`)
+  Meteor.subscribe('developement-suggest')
 
   return { blogs: Blogs.find({}).fetch() }
 }, BlogSuggestions)
