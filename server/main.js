@@ -8,6 +8,6 @@ Meteor.startup(() => {
   })
 
   Meteor.publish('PublishedBlogs', function() {
-    return Blogs.find({published: true}, { limit: 5 })
+    return Blogs.find({published: true})
   })
 });

@@ -21,6 +21,7 @@ class NavbarHeader extends Component {
               <li><a href="/blockchain">Blockchain</a></li>
               <li><a href="/developement">Developement</a></li>
               <li><a href="/behind-the-scenes">Behind-the-Scenes</a></li>
+              <li><a href="/general">General</a></li>
               <li><a href="/about">About</a></li>
             </ul>
             <ul className="nav navbar-nav navbar-right" >

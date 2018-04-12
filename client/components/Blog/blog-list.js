@@ -36,7 +36,6 @@ class BlogList extends Component {
               </div>
           )
         }
-
       })
     }
   }

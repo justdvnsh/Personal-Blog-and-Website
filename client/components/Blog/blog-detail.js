@@ -2,7 +2,7 @@ import React , { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Blogs } from '../../../imports/collections/blogs';
 import { Link } from 'react-router-dom';
-import {markdown} from 'markdown';
+import { MarkdownPreview } from 'react-marked-markdown';
 
 class BlogDetail extends Component {
   render () {
@@ -11,9 +11,6 @@ class BlogDetail extends Component {
     let blog = <p> Loading </p>
 
     if (this.props.blog) {
-
-      const rawHTML = markdown.toHTML(this.props.blog.content)
-
       blog = (
         <div className="container-fluid" >
           <div className="row">
@@ -23,9 +20,17 @@ class BlogDetail extends Component {
                 <h1>{ this.props.blog.title }</h1>
                 <hr />
                 <br />
-                <div dangerouslySetInnerHTML={{__html: rawHTML}} ref="preview">
-
-                </div>
+                <MarkdownPreview
+                      value={this.props.blog.content}
+                      markedOptions={{
+                        gfm: true,
+                        tables: true,
+                        breaks: false,
+                        pedantic: false,
+                        sanitize: true,
+                        smartLists: true,
+                        smartypants: false
+                       }} />
               </div>
             </div>
           </div>

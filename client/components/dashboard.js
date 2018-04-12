@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { MarkdownPreview } from 'react-marked-markdown'
 
 class Dashboard extends Component {
+
+  state = {
+    value: ''
+  }
+
   submitHandler(event) {
     event.preventDefault();
 
@@ -9,6 +15,10 @@ class Dashboard extends Component {
     console.log(this.refs.title.value, this.refs.select.value, tags, this.refs.content.value)
 
     Meteor.call('blogs.insert', this.refs.title.value, this.refs.select.value, tags, this.refs.content.value)
+  }
+
+  handleTextChange(event) {
+    this.setState({ value: event.target.value })
   }
 
   render() {
@@ -33,10 +43,19 @@ class Dashboard extends Component {
                       <option>general</option>
                     </select><br />
                     <input type="text" ref="tags" className="form-control" placeholder="Tags..."/><br />
-                    <textarea type="textarea" placeholder="asdasd" ref="content" className="form-control"/><br />
+                    <textarea type="textarea" placeholder="Contetn..." ref="content" className="form-control" onChange={this.handleTextChange.bind(this)}/><br />
                     <button className="btn btn-success" type="submit">Save</button><br />
                   </form><br />
                 </div>
+                <MarkdownPreview value={this.state.value}   markedOptions={{
+                    gfm: true,
+                    tables: true,
+                    breaks: false,
+                    pedantic: false,
+                    sanitize: true,
+                    smartLists: true,
+                    smartypants: false
+                   }} />
               </div>
             </div>
           </div>
