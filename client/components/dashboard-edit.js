@@ -2,19 +2,24 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Blogs } from '../../imports/collections/blogs';
 import { createContainer } from 'meteor/react-meteor-data';
-import { markdown } from 'markdown'
+import  { MarkdownPreview } from 'react-marked-markdown';
 
 class DashboardEdit extends Component {
+
+  state = {
+    value: ''
+  }
+
   submitHandler(event) {
     event.preventDefault();
 
     console.log(this.refs.title.value, this.refs.select.value, this.refs.tags.value, this.refs.content.value)
 
-    Meteor.call('blogs.edit', this.props.blog._id ,this.refs.title.value, this.refs.select.value, this.refs.tags.value, this.refs.content.value)
+    Meteor.call('blogs.edit', this.props.blog._id ,this.refs.title.value, this.refs.select.value, this.refs.tags.value, this.refs.coverImg.value,  this.refs.metaData.value  ,this.refs.content.value)
   }
 
-  onEditorChange() {
-    this.refs.preview.value = this.refs.content.value
+  handleTextChange(event) {
+    this.setState({ value: event.target.value })
   }
 
   render() {
@@ -23,7 +28,6 @@ class DashboardEdit extends Component {
     let dashboard = <p> You need to Login First..!</p>
 
     if (Meteor.userId() && this.props.blog) {
-      const rawHTML = markdown.toHTML(this.props.blog.content)
        dashboard = (
         <div className="container">
           <div className="col-md-8 col-md-offset-2">
@@ -40,13 +44,21 @@ class DashboardEdit extends Component {
                       <option>general</option>
                     </select><br />
                     <input type="text" ref="tags" className="form-control"  defaultValue={this.props.blog.tags} /><br />
-                    <textarea type="textarea" ref="content" defaultValue={this.props.blog.content} className="form-control" onChange={() => this.onEditorChange()}/><br />
+                    <input type="text" ref="coverImg" className="form-control" placeholder="Img Path" defaultValue = { this.props.blog.coverImg } onChange={this.handleTextChange.bind(this)}/><br />
+                    <textarea type="textarea" placeholder="meta data..." ref="metaData" className="form-control" defaultValue = { this.props.blog.metaData }  onChange={this.handleTextChange.bind(this)}/><br />
+                    <textarea type="textarea" placeholder="Contetn..." ref="content" className="form-control" onChange={this.handleTextChange.bind(this)}/><br />
                     <button className="btn btn-success" type="submit">Save</button><br />
                   </form><br />
                 </div><br />
-                <div className="container">
-                  <div dangerouslySetInnerHTML={{__html: rawHTML}} ref="preview"></div>
-                </div>
+                <MarkdownPreview value={this.state.value}   markedOptions={{
+                    gfm: true,
+                    tables: true,
+                    breaks: false,
+                    pedantic: false,
+                    sanitize: true,
+                    smartLists: true,
+                    smartypants: false
+                   }} />
               </div>
             </div>
           </div>

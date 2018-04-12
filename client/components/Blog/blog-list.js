@@ -17,7 +17,13 @@ class BlogList extends Component {
                 <Link to={`/${blog.category}/${blog._id}`} style={{ textDecoration: 'none' }}>
                   <div className="card" style={{ backgroundColor: "#fff" ,boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '10px', marginBottom: '20px', width: '80%',marginLeft: '9.5%', height: '330px'}}>
                     <div className="card-body">
-                      <h1>{blog.title}</h1>
+                      <div className="col-md-8">
+                        <img src={ blog.coverImg } align="left" style={{ width: '100%', height: '100%', display: 'block' }}/>
+                      </div>
+                      <div className="col-md-4">
+                        <h1 style={{ wordWrap: 'break-word'}}> {blog.title}</h1>
+                        <p style={{ wordWrap: 'break-word', fontSize: '22px' }}>{ blog.metaData }</p>
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -25,11 +31,17 @@ class BlogList extends Component {
           )
         } else {
           return (
-              <div className="col-md-4" key={blog._id} style={{ width: '27%' }} >
+              <div className="col-md-4 custom-card" key={blog._id} style={{ width: '27%' }} >
                 <Link to={`/${blog.category}/${blog._id}`} style={{ textDecoration: 'none' }}>
                   <div className="card" style={{ backgroundColor: "#fff" ,boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '10px', marginLeft: '36%', marginTop: '10%', marginBottom: '10%' ,width: '100%', height: '600px', wordWrap: "break-word"}}>
                     <div className="card-body">
-                      <h1>{blog.title}</h1>
+                      <div className="row">
+                        <img src={ blog.coverImg } align="left" style={{ width: '100%', height: '100%', display: 'block'}}/>
+                      </div>
+                      <div className="row">
+                        <h1 style={{ wordWrap: 'break-word'}}>{blog.title}</h1>
+                        <p style={{ wordWrap: 'break-word', fontSize: '22px' }}>{ blog.metaData }</p>
+                      </div>
                     </div>
                   </div>
                 </Link>

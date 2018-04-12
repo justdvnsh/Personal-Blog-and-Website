@@ -14,7 +14,7 @@ class Dashboard extends Component {
     let tags = this.refs.tags.value.split(' ')
     console.log(this.refs.title.value, this.refs.select.value, tags, this.refs.content.value)
 
-    Meteor.call('blogs.insert', this.refs.title.value, this.refs.select.value, tags, this.refs.content.value)
+    Meteor.call('blogs.insert', this.refs.title.value, this.refs.select.value, tags, this.refs.coverImg.value,  this.refs.metaData.value  ,this.refs.content.value)
   }
 
   handleTextChange(event) {
@@ -43,6 +43,8 @@ class Dashboard extends Component {
                       <option>general</option>
                     </select><br />
                     <input type="text" ref="tags" className="form-control" placeholder="Tags..."/><br />
+                    <input type="text" ref="coverImg" className="form-control" placeholder="Img Path" onChange={this.handleTextChange.bind(this)}/><br />
+                    <textarea type="textarea" placeholder="meta data..." ref="metaData" className="form-control" onChange={this.handleTextChange.bind(this)}/><br />
                     <textarea type="textarea" placeholder="Contetn..." ref="content" className="form-control" onChange={this.handleTextChange.bind(this)}/><br />
                     <button className="btn btn-success" type="submit">Save</button><br />
                   </form><br />

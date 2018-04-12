@@ -47,3 +47,19 @@ body {
 .red {
   background-image: linear-gradient(to right bottom, rgba(255,77,77,0.8), rgba(255,0,0,0.8));
 }
+
+
+@media screen and (max-width: 500px) and (max-height: 500px){
+    .header-img {
+      height: 2px
+    }
+
+    .card {
+      width: 100%;
+    }
+
+    .col-md-4 .custom-card {
+      width: 100%
+    }
+
+}
