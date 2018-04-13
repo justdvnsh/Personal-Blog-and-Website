@@ -42,7 +42,6 @@ class Dashboard extends Component {
                       <input type="text" placeholder="Title..." ref="title" className="form-control"/><br />
                       <select ref="select" className="form-control">
                         <option>blockchain</option>
-                        <option>developement</option>
                         <option>behind-the-scenes</option>
                         <option>general</option>
                       </select><br />

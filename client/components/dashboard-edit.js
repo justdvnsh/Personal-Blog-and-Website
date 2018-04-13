@@ -3,7 +3,8 @@ import { Meteor } from 'meteor/meteor';
 import { Blogs } from '../../imports/collections/blogs';
 import { createContainer } from 'meteor/react-meteor-data';
 import  { MarkdownPreview } from 'react-marked-markdown';
-import Spinner from './spinner'
+import Spinner from './spinner';
+import Header from './Header/header'
 
 class DashboardEdit extends Component {
 
@@ -30,36 +31,38 @@ class DashboardEdit extends Component {
 
     if (Meteor.userId() && this.props.blog) {
        dashboard = (
-        <div className="container">
-          <div className="col-md-8 col-md-offset-2">
-            <div className="card">
-              <div className="card-body">
-                <h1>Blog Post Edit</h1>
-                <div className="form-group">
-                  <form onSubmit={this.submitHandler.bind(this)}>
-                    <input type="text" ref="title" className="form-control" defaultValue={this.props.blog.title}  /><br />
-                    <select ref="select" className="form-control" defaultValue={this.props.blog.category}>
-                      <option>Blockchain</option>
-                      <option>Developement</option>
-                      <option>Behind-the-scenes</option>
-                      <option>general</option>
-                    </select><br />
-                    <input type="text" ref="tags" className="form-control"  defaultValue={this.props.blog.tags} /><br />
-                    <input type="text" ref="coverImg" className="form-control" placeholder="Img Path" defaultValue = { this.props.blog.coverImg } onChange={this.handleTextChange.bind(this)}/><br />
-                    <textarea type="textarea" placeholder="meta data..." ref="metaData" className="form-control" defaultValue = { this.props.blog.metaData }  onChange={this.handleTextChange.bind(this)}/><br />
-                    <textarea type="textarea" placeholder="Contetn..." ref="content" className="form-control" onChange={this.handleTextChange.bind(this)}/><br />
-                    <button className="btn btn-success" type="submit">Save</button><br />
-                  </form><br />
-                </div><br />
-                <MarkdownPreview value={this.state.value}   markedOptions={{
-                    gfm: true,
-                    tables: true,
-                    breaks: false,
-                    pedantic: false,
-                    sanitize: true,
-                    smartLists: true,
-                    smartypants: false
-                   }} />
+         <div>
+         <Header type="red" />
+          <div className="container">
+            <div className="col-md-8 col-md-offset-2">
+              <div className="card">
+                <div className="card-body">
+                  <h1>Blog Post Edit</h1>
+                  <div className="form-group">
+                    <form onSubmit={this.submitHandler.bind(this)}>
+                      <input type="text" ref="title" className="form-control" defaultValue={this.props.blog.title}  /><br />
+                      <select ref="select" className="form-control" defaultValue={this.props.blog.category}>
+                        <option>Blockchain</option>
+                        <option>Behind-the-scenes</option>
+                        <option>general</option>
+                      </select><br />
+                      <input type="text" ref="tags" className="form-control"  defaultValue={this.props.blog.tags} /><br />
+                      <input type="text" ref="coverImg" className="form-control" placeholder="Img Path" defaultValue = { this.props.blog.coverImg } onChange={this.handleTextChange.bind(this)}/><br />
+                      <textarea type="textarea" placeholder="meta data..." ref="metaData" className="form-control" defaultValue = { this.props.blog.metaData }  onChange={this.handleTextChange.bind(this)}/><br />
+                      <textarea type="textarea" placeholder="Contetn..." ref="content" className="form-control" defaultValue={this.props.blog.content} onChange={this.handleTextChange.bind(this)}/><br />
+                      <button className="btn btn-success" type="submit">Save</button><br />
+                    </form><br />
+                  </div><br />
+                  <MarkdownPreview value={this.state.value}   markedOptions={{
+                      gfm: true,
+                      tables: true,
+                      breaks: false,
+                      pedantic: false,
+                      sanitize: true,
+                      smartLists: true,
+                      smartypants: false
+                     }} />
+                </div>
               </div>
             </div>
           </div>

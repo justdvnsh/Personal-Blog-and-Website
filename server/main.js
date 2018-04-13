@@ -7,8 +7,8 @@ Meteor.startup(() => {
     return Blogs.find({published: false})
   })
 
-  Meteor.publish('PublishedBlogs', function() {
-    return Blogs.find({published: true})
+  Meteor.publish('PublishedBlogs', function(per_page) {
+    return Blogs.find({published: true}, { limit: per_page })
   })
 
   Meteor.publish('blockchain', function() {

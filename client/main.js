@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import App from './components/app';
 import Blockchain from './components/blockchain';
-import BlockchainSingle from './components/blockchain-single'
-import Developement from './components/developement';
-import DevelopementSingle from './components/developement-single';
+import BlockchainSingle from './components/blockchain-single';
 import BehindTheScenes from './components/behind-the-scenes';
 import BehindTheScenesSingle from './components/behind-the-scenes-single'
 import General from './components/general';
@@ -25,8 +23,6 @@ const routes = (
       <Route path="/" exact component={App} />
       <Route path="/blockchain/:id" exact component={BlockchainSingle} />
       <Route path="/blockchain" exact component={Blockchain} />
-      <Route path="/developement" exact component={Developement} />
-      <Route path="/developement/:id" exact component={DevelopementSingle} />
       <Route path="/behind-the-scenes" exact component={BehindTheScenes} />
       <Route path="/behind-the-scenes/:id" exact component={BehindTheScenesSingle} />
       <Route path="/general" exact component={General} />

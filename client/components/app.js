@@ -3,8 +3,22 @@ import Header from './Header/header';
 import BlogList from './Blog/blog-list';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Blogs } from '../../imports/collections/blogs'
+import Spinner from './spinner'
+
+
+const PER_PAGE = 3
 
 class App extends Component {
+
+  componentWillMount() {
+    this.page = 1
+  }
+
+  handleButtonClick() {
+    Meteor.subscribe('PublishedBlogs',  PER_PAGE * (this.page + 1));
+    this.page += 1;
+  }
+
   render () {
     console.log(']app]',this.props)
 
@@ -13,8 +27,13 @@ class App extends Component {
         <Header type="green"/>
         <div className="container-fluid" style={{backgroundColor: '#ececec'}}>
           <div className="row" style={{ width: '100%'}}>
-            <BlogList blogs={this.props.blogs}/>
+            {
+              this.props.blogs ? <BlogList blogs={this.props.blogs}/> : <Spinner />
+            }
           </div>
+          <center><button className='btn btn-default'
+                  onClick={this.handleButtonClick.bind(this)}
+                  style={{ boxShadow: '0 0 8px -6px #777', marginBottom: '50px', marginTop: '50px' }}>Load More...!</button></center>
         </div>
       </div>
     )
@@ -22,7 +41,7 @@ class App extends Component {
 };
 
 export default createContainer(() => {
-  Meteor.subscribe('PublishedBlogs')
+  Meteor.subscribe('PublishedBlogs', PER_PAGE)
 
   return { blogs: Blogs.find({}).fetch() }
 }, App);

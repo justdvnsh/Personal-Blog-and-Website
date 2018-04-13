@@ -19,7 +19,6 @@ class NavbarBlog extends Component {
             <ul className="nav navbar-nav ">
               <li><a href="/">Home</a></li>
               <li><a href="/blockchain">Blockchain</a></li>
-              <li><a href="/developement">Developement</a></li>
               <li><a href="/behind-the-scenes">Behind-the-Scenes</a></li>
               <li><a href="/general">General</a></li>
               <li><a href="https://justdvnsh.github.io">About</a></li>

@@ -27,7 +27,7 @@ class BlogDetail extends Component {
               <div className="col-md-12">
                 <div className="container-fluid" style={{  width: '85%', borderRadius: '5px'}}>
                   <center><p style={{ marginTop: '60px' }}> 28 Feb 2018 / <Link to={`/${this.props.blog.category}`}>{ this.props.blog.category } </Link></p></center>
-                  <h1 style={{ fontWeight: 'bold', textAlign: 'center', marginTop: '0px'}}>{ this.props.blog.title }</h1>
+                  <h1 style={{ fontWeight: 'bold', textAlign: 'center', marginTop: '0px', fontSize: '48px'}}>{ this.props.blog.title }</h1><br/>
                   <div className="row">
                       {
                         Meteor.userId() ? (
