@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Blogs } from '../../../imports/collections/blogs';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
+import Spinner from '../spinner';
+import Header from '../Header/header'
 
 class BlogListDrafts extends Component {
 
@@ -13,55 +15,41 @@ class BlogListDrafts extends Component {
     this.props.routes.history.push(`/dashboard/edit/${id}`)
   }
 
+  deletePost(blog) {
+    Meteor.call('blogs.remove', blog)
+  }
+
   renderBlogs() {
     if (!this.props.blogs) {
-      return <p>Loading..</p>
+      return <Spinner />
     } else  {
       return this.props.blogs.map((blog, index) => {
-
-        if ( index === 0 || index%4 === 0 ) {
-          return (
-              <div className="col-md-12" key={blog._id}>
-                <Link to={`/${blog.category}/${blog._id}`} style={{ textDecoration: 'none' }}>
-                  <div className="card" style={{ backgroundColor: "#fff" ,boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '10px', marginBottom: '20px', width: '80%',marginLeft: '9.5%', height: '330px'}}>
-                    <div className="card-body">
-                      <div className="col-md-8">
-                        <img src={ blog.coverImg } align="left" style={{ width: '100%', height: 'auto', display: 'block' }}/>
-                      </div>
-                      <div className="col-md-4">
-                        <h1 style={{ wordWrap: 'break-word'}}>{blog.title}</h1>
-                        <p style={{ wordWrap: 'break-word', fontSize: '22px' }}>{ blog.metaData }</p>
-                        <button className="btn btn-primary" onClick={ () => this.editPost(blog._id) }>Edit</button>
-                        <button className="btn btn-info" onClick={ () => this.publishPost(blog._id) }>Publish</button>
-                        <button className=" btn btn-danger ">Delete</button>
+        return (
+            <div className="col-sm-4  custom-card col-xs-6" key={blog._id} >
+              <Link to={`/${blog.category}/${blog._id}`} style={{ textDecoration: 'none' }}>
+                <div className="card card-mobile-xs-4" >
+                  <div className="card-body">
+                    <div className="row">
+                      <div className="col-xs-12">
+                      {
+                        blog.coverImg ? <img src={ blog.coverImg } align="left" className='card-img'/> : <img src="" className="xs-4-img-not-found"/>
+                      }
                       </div>
                     </div>
-                  </div>
-                </Link>
-              </div>
-          )
-        } else {
-          return (
-              <div className="col-md-4" key={blog._id} style={{ width: '27%' }} >
-                <Link to={`/${blog.category}/${blog._id}`} style={{ textDecoration: 'none' }}>
-                  <div className="card" style={{ backgroundColor: "#fff" ,boxShadow: '0 0 40px -6px #777', padding: '30px', borderRadius: '10px', marginLeft: '36%', marginTop: '10%', marginBottom: '10%' ,width: '100%', height: '600px', wordWrap: "break-word"}}>
-                    <div className="card-body">
-                      <div className="row">
-                        <img src={ blog.coverImg } align="left" style={{ width: '100%', height: 'auto', display: 'block'  }}/>
-                      </div>
-                      <div className="row">
-                        <h1 style={{ wordWrap: 'break-word'}}>{blog.title}</h1>
-                        <p style={{ wordWrap: 'break-word', fontSize: '22px' }}>{ blog.metaData }</p>
-                        <button className="btn btn-primary" onClick={ () => this.editPost(blog._id) }>Edit</button>
-                        <button className="btn btn-info" onClick={ () => this.publishPost(blog._id) }>Publish</button>
-                        <button className=" btn btn-danger ">Delete</button>
-                      </div>
+                    <div className="row" style={{ padding: '30px', position: 'relative' }}>
+                      <span style={{ color: '#777', fontSize: '15px', textTransform: 'capitalize' }}>{ blog.category }</span>
+                      <h1 style={{ wordWrap: 'break-word'}} className="blog-list-h1">{blog.title}</h1>
+                      <p style={{ wordWrap: 'break-word', fontSize: '16px', color: 'black', height: '10px', position: 'absolute', marginTop: '100px' , paddingRight: '10px'}} className="meta-data">{ blog.metaData }</p>
+                      <span style={{ textTransform: 'capitalize', fontSize: '15px', color: 'rgba(77,166,255, 0.8)', fontWeight: 'bold', position: 'absolute', marginTop: '230px' }}>Divyansh Dwivedi
+                      <button className="btn btn-primary"   onClick={() => this.editPost(id)}>Edit</button>
+                      <button className="btn btn-info"   onClick={() => this.publishPost(id)}>Publish</button>
+                      <button className="btn btn-danger" onClick={() => this.deletePost(blog)}>Delete</button></span>
                     </div>
                   </div>
-                </Link>
-              </div>
-          )
-        }
+                </div>
+              </Link>
+            </div>
+        )
       })
     }
   }
@@ -69,6 +57,7 @@ class BlogListDrafts extends Component {
   render () {
     return (
       <div>
+        <Header type="red"/>
         <h1>{this.renderBlogs()}</h1>
       </div>
     )

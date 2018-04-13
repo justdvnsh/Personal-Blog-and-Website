@@ -31,7 +31,6 @@ const routes = (
       <Route path="/behind-the-scenes/:id" exact component={BehindTheScenesSingle} />
       <Route path="/general" exact component={General} />
       <Route path="/general/:id" exact component={GeneralSingle} />
-      <Route path="/about" exact component={App} />
       <Route path="/admin" exact component={Admin} />
       <Route path="/dashboard/edit/:id" exact component={DashboardEdit} />
       <Route path="/dashboard" exact component={Dashboard} />

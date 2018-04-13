@@ -1,10 +1,11 @@
 import React , { Component } from 'react';
 import BlogListDrafts from './Blog/blog-list-drafts';
-import { Meteor } from 'meteor/meteor'
+import { Meteor } from 'meteor/meteor';
+import Spinner from './spinner'
 
 class Drafts extends Component {
   render () {
-    let drafts = <p>You need to Login First</p>
+    let drafts = <Spinner />
 
     if(Meteor.userId()) {
       drafts = <BlogListDrafts routes={this.props}/>

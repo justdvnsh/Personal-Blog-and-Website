@@ -22,6 +22,14 @@ Meteor.methods({
   'blogs.edit': function(id, title, category, tags, coverImg  , metaData ,content) {
     return Blogs.update(id, { $set: { title, category , tags  , coverImg , metaData , content } })
   },
+
+  'blogs.remove': function(blog) {
+    return Blogs.remove(blog)
+  },
+
+  'blogs.unpublish': function(id) {
+    return Blogs.update(id, { $set: { published: false } })
+  }
 });
 
 export const Blogs = new Mongo.Collection('blogs');

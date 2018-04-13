@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { MarkdownPreview } from 'react-marked-markdown'
+import { MarkdownPreview } from 'react-marked-markdown';
+import Header from './Header/header';
+import Spinner from './spinner'
 
 class Dashboard extends Component {
 
@@ -24,40 +26,43 @@ class Dashboard extends Component {
   render() {
     console.log(this.props, Meteor.userId())
 
-    let dashboard = <p> You need to Login First..!</p>
+    let dashboard = <Spinner />
 
     if (Meteor.userId()) {
        dashboard = (
-        <div className="container" >
-          <div className="col-md-8 col-md-offset-2">
-            <div className="card">
-              <div className="card-body">
-                <h1>Blog Post</h1>
-                <div className="form-group">
-                  <form onSubmit={this.submitHandler.bind(this)}>
-                    <input type="text" placeholder="Title..." ref="title" className="form-control"/><br />
-                    <select ref="select" className="form-control">
-                      <option>blockchain</option>
-                      <option>developement</option>
-                      <option>behind-the-scenes</option>
-                      <option>general</option>
-                    </select><br />
-                    <input type="text" ref="tags" className="form-control" placeholder="Tags..."/><br />
-                    <input type="text" ref="coverImg" className="form-control" placeholder="Img Path" onChange={this.handleTextChange.bind(this)}/><br />
-                    <textarea type="textarea" placeholder="meta data..." ref="metaData" className="form-control" onChange={this.handleTextChange.bind(this)}/><br />
-                    <textarea type="textarea" placeholder="Contetn..." ref="content" className="form-control" onChange={this.handleTextChange.bind(this)}/><br />
-                    <button className="btn btn-success" type="submit">Save</button><br />
-                  </form><br />
+         <div>
+         <Header type="red" />
+          <div className="container" >
+            <div className="col-md-8 col-md-offset-2">
+              <div className="card">
+                <div className="card-body">
+                  <h1>Blog Post</h1>
+                  <div className="form-group">
+                    <form onSubmit={this.submitHandler.bind(this)}>
+                      <input type="text" placeholder="Title..." ref="title" className="form-control"/><br />
+                      <select ref="select" className="form-control">
+                        <option>blockchain</option>
+                        <option>developement</option>
+                        <option>behind-the-scenes</option>
+                        <option>general</option>
+                      </select><br />
+                      <input type="text" ref="tags" className="form-control" placeholder="Tags..."/><br />
+                      <input type="text" ref="coverImg" className="form-control" placeholder="Img Path" onChange={this.handleTextChange.bind(this)}/><br />
+                      <textarea type="textarea" placeholder="meta data..." ref="metaData" className="form-control" onChange={this.handleTextChange.bind(this)}/><br />
+                      <textarea type="textarea" placeholder="Contetn..." ref="content" className="form-control" onChange={this.handleTextChange.bind(this)}/><br />
+                      <button className="btn btn-success" type="submit">Save</button><br />
+                    </form><br />
+                  </div>
+                  <MarkdownPreview value={this.state.value}   markedOptions={{
+                      gfm: true,
+                      tables: true,
+                      breaks: false,
+                      pedantic: false,
+                      sanitize: true,
+                      smartLists: true,
+                      smartypants: false
+                     }} />
                 </div>
-                <MarkdownPreview value={this.state.value}   markedOptions={{
-                    gfm: true,
-                    tables: true,
-                    breaks: false,
-                    pedantic: false,
-                    sanitize: true,
-                    smartLists: true,
-                    smartypants: false
-                   }} />
               </div>
             </div>
           </div>

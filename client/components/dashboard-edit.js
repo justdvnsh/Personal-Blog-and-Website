@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Blogs } from '../../imports/collections/blogs';
 import { createContainer } from 'meteor/react-meteor-data';
 import  { MarkdownPreview } from 'react-marked-markdown';
+import Spinner from './spinner'
 
 class DashboardEdit extends Component {
 
@@ -25,7 +26,7 @@ class DashboardEdit extends Component {
   render() {
     console.log(this.props)
 
-    let dashboard = <p> You need to Login First..!</p>
+    let dashboard = <Spinner />
 
     if (Meteor.userId() && this.props.blog) {
        dashboard = (

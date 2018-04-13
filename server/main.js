@@ -27,4 +27,8 @@ Meteor.startup(() => {
     return Blogs.find({ category: 'general' })
   })
 
+  Meteor.publish('suggest', function(category) {
+    return Blogs.find({ category: category }, { limit: 3 })
+  })
+
 });

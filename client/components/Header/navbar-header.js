@@ -22,7 +22,14 @@ class NavbarHeader extends Component {
               <li><a href="/developement">Developement</a></li>
               <li><a href="/behind-the-scenes">Behind-the-Scenes</a></li>
               <li><a href="/general">General</a></li>
-              <li><a href="/about">About</a></li>
+              <li><a href="https://justdvnsh.github.io">About</a></li>
+              { Meteor.userId() ? (
+                <div style={{ display: 'inline-block' }} className="admin-nav">
+                <li><a href="/admin">Admin</a></li>
+                <li><a href="/drafts">drafts</a></li>
+                <li><a href="/dashboard">dashboard</a></li>
+                </div>
+              ) : null }
             </ul>
             <ul className="nav navbar-nav navbar-right" >
               <li><a href="#">Twitter</a></li>
