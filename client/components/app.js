@@ -25,16 +25,10 @@ class App extends Component {
     return (
       <div>
         <Header type="green"/>
-        <div className="container-fluid" style={{backgroundColor: '#ececec'}}>
-          <div className="row" style={{ width: '100%'}}>
-            {
-              this.props.blogs ? <BlogList blogs={this.props.blogs}/> : <Spinner />
-            }
-          </div>
+          <BlogList blogs={this.props.blogs}/> 
           <center><button className='btn btn-default'
                   onClick={this.handleButtonClick.bind(this)}
                   style={{ boxShadow: '0 0 8px -6px #777', marginBottom: '50px', marginTop: '50px' }}>Load More...!</button></center>
-        </div>
       </div>
     )
   }
