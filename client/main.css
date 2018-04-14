@@ -108,10 +108,10 @@ body {
   width: 80%;
   margin-left: 7.8%;
   align-items: stretch;
+  margin-bottom: 8%
 }
 
 .thumbnail {
-  flex: 1;
   display: flex;           /* new */
   flex-direction: column;
   color: #444;
@@ -121,6 +121,9 @@ body {
   width: 300px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: all .1s ease-in;
+  height: 97%;
+  justify-content: space-around;
+  margin: 4px;
 }
 
 
@@ -130,7 +133,7 @@ body {
 }
 
 .caption{
-  flex: 1;
+  flex: 1 0 auto;
 }
 
 .span {
@@ -139,8 +142,9 @@ body {
   color: #999;
   text-transform: uppercase;
   letter-spacing: .05em;
-  margin: 2em 0 0 0;
-  align-self: stretch;
+  margin: 1em 0 0 0;
+  align-self: flex-end;
+  padding: 1.5rem;
 }
 
 
